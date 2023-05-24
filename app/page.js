@@ -7,10 +7,7 @@ const HomePage = () => {
       </div> */}
 
 
-      <div class="glassmorphic-container">
-        <h1>Welcome to my website</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis mauris sit amet cursus iaculis. Sed in urna vitae lacus consequat interdum. Praesent ac justo purus.</p>
-      </div>
+      HomePage
     </div>
   )
 }
