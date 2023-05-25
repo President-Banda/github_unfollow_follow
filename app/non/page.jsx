@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 async function fetchFollowing(){
@@ -15,11 +16,50 @@ async function fetchFollowers(){
 const NonFollowersPage = async() => {
 
     const followers = await fetchFollowers();
-    const following = await fetchFollowing(); 
+    const following = await fetchFollowing();
+    //const following = [1,2,3,4]; 
 
-    const notFollowing = followers.filter((follower) => !following.includes(follower));
+    //let notFollowing = [];
 
-    // console.log(notFollowing);
+    following.forEach((follow)=>{
+        console.log(follow)
+        // if(followers.includes( follow.id )){
+        //     console.log(follower);
+        //     // return follower;
+        // }
+    })
+
+    // try{
+    //     following.forEach((follow)=>{
+    //         console.log(follow)
+    //         // if(followers.includes( follow.id )){
+    //         //     console.log(follower);
+    //         //     // return follower;
+    //         // }
+    //     })
+    // }
+    // catch(error){
+    //     console.log(error)
+    // }
+
+    
+
+    // const notFollowing = followers.filter((follower) => {
+    //     return following.includes((user) => user.login === follower.login);
+    //   });
+	   
+    // const notFollowing = followers.filter(follower => {
+    //     return !following.find(user => user.id === follower.id);
+    //   });
+
+      const notFollowing = following.filter(user => {
+        return !followers.find(follower => follower.login === user.login);
+      });
+      
+      
+      
+
+    console.log(notFollowing);
   return (
     <div className="grid grid-cols-3 justify-center text-center">
             <div className="glassmorphic-container col-start-2 m-1 text-lg">
