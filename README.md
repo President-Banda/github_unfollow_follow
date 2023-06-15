@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Git Hub Follow UnFollow
 
-## Getting Started
+# Version Note : Currently supports 200 followers or the first 200 until you manually edit the lines containing the `per page value`
 
-First, run the development server:
+## 1. This is a limited feature version, you have to edit the code files manually with your username.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1.1 To edit get a list of people not following you, edit the file under
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+``` /app/non/page.jsx ```
+### on line number 4 and 10 respectively in the URL links
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 1.2 To get a list of people following you, edit
+``` /app/following/page.jsx```
+### On the line number 4 and plug in your username
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 1.3 To get a list of people you follow, simply edit the 
+``` app/followers/page.jsx```
+### and plug in your username on line number
+`6 subject to change`
 
-## Learn More
+#### Final Note : This is still a work in progress, as I figure out how Next.js 13 modified some parameters for transferring page data to automatically get your username from the landing page, which has been more than a pain so far. 
 
-To learn more about Next.js, take a look at the following resources:
+# Installation
+## 1. Run
+`npm install`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 2. Once complete, run
+`npm run dev`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 3. This will open up the application, on port 3000 of your machine, visit:
+`localhost:3000`
+## to preview
 
-## Deploy on Vercel
+##### Your feedback/assistance/advice will be greatly appreciated!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+

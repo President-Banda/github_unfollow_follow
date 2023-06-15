@@ -1,13 +1,30 @@
+'use client';
 import Link from "next/link";
 
-async function fetchFollowers(){
-    const response = await fetch('https://api.github.com/users/president-banda/followers?per_page=100');
+async function fetchFollowers( username ){
+    console.log(username)
+    const response = await fetch(`https://api.github.com/users/${username}/followers?per_page=100`);
     const followers = await response.json();
     return followers
 }
 
-const FollowersPage = async () => {
-    const followers =  await fetchFollowers();
+const FollowersPage = async ( {searchParams} ) => {
+    try {
+        if (!searchParams || !searchParams.search) {
+          throw new Error('Invalid search parameters');
+        }
+    
+        const user = searchParams.search;
+        const followers = await fetchFollowers(user);
+    
+        // Rest of your code handling followers...
+    
+      } catch (error) {
+        console.error('Error occurred:', error);
+        // Handle or display the error appropriately
+      }
+
+    const followers =  await fetchFollowers(user);
     //console.log(followers);
   return <div className="grid grid-cols-3 justify-center text-center">
             <div className="glassmorphic-container col-start-2 m-1 text-lg">
@@ -31,3 +48,10 @@ const FollowersPage = async () => {
 }
 
 export default FollowersPage
+
+// const FollowersPage = ({ searchParams }) => {
+//     console.log(searchParams.search) // Logs "search"
+//   }
+  
+//   export default FollowersPage
+  
