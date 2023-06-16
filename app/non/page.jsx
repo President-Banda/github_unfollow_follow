@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 async function fetchFollowing(){
-    const response = await fetch('https://api.github.com/users/president-banda/following?per_page=100');
+    const response = await fetch('https://api.github.com/users/president-banda/following?per_page=200');
     const following = await response.json();
     return following
 }
 
 async function fetchFollowers(){
-    const response = await fetch('https://api.github.com/users/president-banda/followers?per_page=100');
+    const response = await fetch('https://api.github.com/users/president-banda/followers?per_page=200');
     const followers = await response.json();
     return followers
 }
