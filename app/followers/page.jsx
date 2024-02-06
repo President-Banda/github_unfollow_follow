@@ -1,32 +1,45 @@
 'use client';
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import fetchFollowers from "./fetchFollowers";
 
-async function fetchFollowers( username ){
-    console.log(username)
-   // const response = await fetch(`https://api.github.com/users/${username}/followers?per_page=200`);
-    const response = await fetch(`https://api.github.com/users/president-banda/followers?per_page=200`);
-    const followers = await response.json();
-    return followers
-}
 
-const FollowersPage = async ( {searchParams} ) => {
-    try {
-        if (!searchParams || !searchParams.search) {
-          throw new Error('Invalid search parameters');
-        }
-    
-        const user = searchParams.search;
-        const followers = await fetchFollowers(user);
-    
-        // Rest of your code handling followers...
-    
-      } catch (error) {
-        console.error('Error occurred:', error);
-        // Handle or display the error appropriately
-      }
+const FollowersPage = ( {searchParams} ) => {
 
-    const followers =  await fetchFollowers(user);
-    //console.log(followers);
+    const username = searchParams.search;
+
+    //console.log (username);
+    const [followers, setFollowers] = useState([])
+
+    useEffect(() => {
+      const fetchFollower = async() => {
+        const response = await fetchFollowers(username);
+        
+        setFollowers(response);
+      };
+    
+      fetchFollower();
+
+      console.log(followers);
+    }, [])
+    
+
+    // try {
+    //     if (!searchParams || !searchParams.search) {
+    //       throw new Error('Invalid search parameters');
+    //     }
+    
+    //     const user = searchParams.search;
+    
+    //     // Rest of your code handling followers...
+    
+    //   } catch (error) {
+    //     console.error('Error occurred:', error);
+    //     // Handle or display the error appropriately
+    //   }
+
+    // const followers =  await fetchFollowers(user);
+    // //console.log(followers);
   return <div className="grid grid-cols-3 justify-center text-center">
             <div className="glassmorphic-container col-start-2 m-1 text-lg">
                 You Have : { Object.keys(followers).length } Followers
