@@ -50,7 +50,7 @@ const FollowersPage = ( {searchParams} ) => {
                     { followers.map((follower) => (
                         <li key={follower.id}>
                             <div className="grid grid-cols-3 mb-5 focus:border">
-                                <img src={follower.avatar_url}  width={50} height={50} loading="lazy"/>
+                                <img src={follower.avatar_url}  width={50} height={50} loading="lazy" className="rounded-lg"/>
                                 { follower.login }
                                 <Link href={follower.html_url}>View Profile</Link>
                             </div>

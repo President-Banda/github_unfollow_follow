@@ -1,13 +1,28 @@
+'use client';
+import React from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import fetchFollowing from './fetchFollowing';
 
-async function fetchFollowing(){
-    const response = await fetch('https://api.github.com/users/president-banda/following?per_page=200');
-    const following = await response.json();
-    return following
-}
 
-const FollowingPage = async() => {
-    const following = await fetchFollowing();
+const FollowingPage = ({searchParams}) => {
+    
+    const username = searchParams.search;
+
+    //console.log (username);
+    const [following, setFollowing] = useState([])
+
+    useEffect(() => {
+      const fetchFollowings = async() => {
+        const response = await fetchFollowing(username);
+        
+        setFollowing(response);
+      };
+    
+      fetchFollowings();
+
+      console.log(following);
+    }, [])
 
   return (
     <div className="grid grid-cols-3 justify-center text-center">
@@ -20,7 +35,7 @@ const FollowingPage = async() => {
                     { following.map((following) => (
                         <li key={following.id}>
                             <div className="grid grid-cols-3 mb-5 focus:border">
-                                <img src={following.avatar_url}  width={50} height={50} loading="lazy"/>
+                                <img src={following.avatar_url}  width={50} height={50} loading="lazy" className="rounded-lg"/>
                                 { following.login }
                                 <Link href={following.html_url}>View Profile</Link>
                             </div>

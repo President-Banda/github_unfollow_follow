@@ -13,7 +13,7 @@ const HomePage = () => {
     <div className="text-center pt-10">
       <form className="h-10 flex flex-row text-center align-middle justify-center">
         <input
-          className="rounded-lg h-full mr-2 border border-slate-900"
+          className="rounded-lg h-full mr-2 border border-slate-900 p-5"
           type="text"
           name="search"
           placeholder="Enter Your Username..."
